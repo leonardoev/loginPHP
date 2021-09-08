@@ -14,76 +14,78 @@ if (isset($_SESSION['email']) && isset($_SESSION['id'])) { ?>
     </head>
 
     <body>
-        <?php
-        if ($_SESSION['role'] == 'admin') { ?>
-            <h5>Welcome <?= $_SESSION['fullName'] ?>!</h5>
-            <a href="logout.php" class="btn btn-dark">Logout</a>
-            <a href="create.php">Create</a> |
-            <div class="p-3">
-                <?php include 'php/members.php';
-                if (mysqli_num_rows($res) > 0) { ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            while ($rows = mysqli_fetch_assoc($res)) { ?>
+        <div class="container">
+            <?php
+            if ($_SESSION['role'] == 'admin') { ?>
+                <h2 class="text-center p-3">Welcome <?= $_SESSION['fullName'] ?>!</h2>
+                <a href="logout.php" class="btn btn-dark">Logout</a>
+                <a href="create.php">Create</a>
+                <div class="p-3">
+                    <?php include 'php/members.php';
+                    if (mysqli_num_rows($res) > 0) { ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <th scope="row"><?= $i ?></th>
-                                    <td><?= $rows['fullName'] ?></td>
-                                    <td><?= $rows['email'] ?></td>
-                                    <td><?= $rows['role'] ?></td>
-                                    <td>
-                                        <a href="php/edit.php?id=<?php echo $rows['id']?>">Edit</a> |
-                                        <a  href="php/delete.php?id=<?php echo $rows['id']?>" >Delete</a>
-                                    </td>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
-                            <?php $i++;
-                            } ?>
-                        </tbody>
-                    </table>
-                <?php } ?>
-            </div>
-        <?php } else { ?>
-            <h5>Welcome <?= $_SESSION['fullName'] ?>!</h5>
-            <a href="logout.php" class="btn btn-dark">Logout</a>
-            <div class="p-3">
-                <?php include 'php/members.php';
-                if (mysqli_num_rows($res) > 0) { ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            while ($rows = mysqli_fetch_assoc($res)) { ?>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                while ($rows = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <th scope="row"><?= $i ?></th>
+                                        <td><?= $rows['fullName'] ?></td>
+                                        <td><?= $rows['email'] ?></td>
+                                        <td><?= $rows['role'] ?></td>
+                                        <td>
+                                            <a href="php/edit.php?id=<?php echo $rows['id'] ?>">Edit</a> |
+                                            <a href="php/delete.php?id=<?php echo $rows['id'] ?>">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php $i++;
+                                } ?>
+                            </tbody>
+                        </table>
+                    <?php } ?>
+                </div>
+            <?php } else { ?>
+                <h5>Welcome <?= $_SESSION['fullName'] ?>!</h5>
+                <a href="logout.php" class="btn btn-dark">Logout</a>
+                <div class="p-3">
+                    <?php include 'php/members.php';
+                    if (mysqli_num_rows($res) > 0) { ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <th scope="row"><?= $i ?></th>
-                                    <td><?= $rows['fullName'] ?></td>
-                                    <td><?= $rows['email'] ?></td>
-                                    <td><?= $rows['role'] ?></td>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
                                 </tr>
-                            <?php $i++;
-                            } ?>
-                        </tbody>
-                    </table>
-                <?php } ?>
-            </div>
-        <?php } ?>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                while ($rows = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <th scope="row"><?= $i ?></th>
+                                        <td><?= $rows['fullName'] ?></td>
+                                        <td><?= $rows['email'] ?></td>
+                                        <td><?= $rows['role'] ?></td>
+                                    </tr>
+                                <?php $i++;
+                                } ?>
+                            </tbody>
+                        </table>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
     </body>
 
     </html>

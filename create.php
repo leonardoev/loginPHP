@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <form action="php/create.php" method="POST">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height:100vh">
+    <form class="border shadow p-3 rounded" action="php/create.php" method="POST"style="width: 450px;">
+    <h2 class="text-center p-3">Create User</h2>
         <div class="mb-3">
             <label for="create_fullName" class="form-label">Full name</label>
             <input type="text" class="form-control" id="create_fullName" name="create_fullName">
@@ -37,8 +39,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="home.php">Back</a>
     </form>
-    <a href="home.php">Back</a>
+    </div>
 </body>
 
 </html>

@@ -13,9 +13,9 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['id'])) { ?>
     </head>
 
     <body>
-        <div class="container">
-            <form action="php/check-login.php" method="POST">
-                <h1>LOGIN</h1>
+        <div class="container d-flex justify-content-center align-items-center" style="min-height:100vh">
+            <form class="border shadow p-3 rounded" action="php/check-login.php" method="POST" style="width: 450px;">
+                <h1 class="text-center p-3">Login</h1>
                 <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
                         <?= $_GET['error'] ?>
