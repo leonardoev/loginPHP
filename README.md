@@ -1,4 +1,5 @@
 # loginPHP
+--admin email:jose@admin.com, password:1234
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
